@@ -7,5 +7,5 @@ STRAVA_AUTH_URL = f"https://www.strava.com/oauth/authorize?client_id={ENV["CLIEN
 
 HOME_PAGE = f"""
     <h1>Strava data project<h1/>
-    <button onclick="window.location.href='{STRAVA_AUTH_URL}'">Go to google</button>
+    <button onclick="window.location.href='{STRAVA_AUTH_URL}'">Go to strava</button>
     """

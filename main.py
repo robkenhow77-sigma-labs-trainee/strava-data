@@ -7,6 +7,7 @@ from flask import Flask, redirect, request, session
 
 from strava_html import HOME_PAGE
 
+
 load_dotenv
 app = Flask(__name__)
 app.secret_key = urandom(20)
