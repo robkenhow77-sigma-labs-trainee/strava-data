@@ -3,10 +3,9 @@ from time import sleep
 
 from dotenv import load_dotenv
 from requests import get, post
-from flask import Flask, redirect, request, session
+from flask import Flask, redirect, request, session, render_template
 
 from strava_html import HOME_PAGE
-
 
 load_dotenv
 app = Flask(__name__)
@@ -15,7 +14,7 @@ app.secret_key = urandom(20)
 
 @app.route("/")
 def hello_world():
-    return HOME_PAGE
+    return render_template('welcome_page.html')
 
 
 @app.route("/callback")

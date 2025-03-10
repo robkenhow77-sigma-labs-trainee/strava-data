@@ -1,0 +1,31 @@
+
+<head>
+    <title>Strava analysis</title>
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='style.css') }}">
+</head>
+
+<div style="height: 80px;"></div>
+<h1 class="main_title">Strava analysis</h1>
+<h2 class="description">This is a description</h2>
+
+<div class="container">
+    <div></div>
+    <div>
+        <img class="graphs" src="{{ url_for('static',filename='placeholder.png') }}" alt="placeholder">
+    </div>
+    <div>
+        <img class="graphs" src="{{ url_for('static',filename='placeholder.png') }}" alt="placeholder">
+    </div>
+    <div></div>
+
+    <div></div>
+    <div>
+        <img class="graphs" src="{{ url_for('static',filename='placeholder.png') }}" alt="placeholder">
+    </div>
+    <div>
+        <img class="graphs" src="{{ url_for('static',filename='placeholder.png') }}" alt="placeholder">
+    </div>
+    <div></div>
+</div>
+<div style="height: 20px;"></div>
+<a class="login_button" href="https://www.strava.com/oauth/authorize?client_id=151075&redirect_uri=http://localhost:5000/callback&response_type=code&scope=activity:read_all">Connect to strava</a>
