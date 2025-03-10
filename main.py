@@ -5,7 +5,6 @@ from dotenv import load_dotenv
 from requests import get, post
 from flask import Flask, redirect, request, session, render_template
 
-from strava_html import HOME_PAGE
 
 load_dotenv
 app = Flask(__name__)
