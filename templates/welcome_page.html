@@ -5,30 +5,30 @@
     <title>Strava analysis</title>
     <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='style.css') }}">
 </head>
-<body style="background-color: #13315C;">
-<div style="height: 20px;"></div>
-<h1 class="title_description">Strava analysis</h1>
-<h2 class="title_description">Dive deeper into your data</h2>
-<div class="container">
-    <div></div>
-    <div class="graph_container">
-        <img class="graphs" src="{{ url_for('static',filename='placeholder.png') }}" alt="placeholder">
-    </div>
-    <div class="graph_container">
-        <img class="graphs" src="{{ url_for('static',filename='placeholder.png') }}" alt="placeholder">
-    </div>
-    <div></div>
+<body class="background_image">
+    <div style="height: 20px;"></div>
+    <h1 class="title_description">Strava analysis</h1>
+    <h2 class="title_description">Dive deeper into your data</h2>
+    <div class="container">
+        <div></div>
+        <div class="graph_container">
+            <img class="graphs" src="{{ url_for('static',filename='placeholder.png') }}" alt="placeholder">
+        </div>
+        <div class="graph_container">
+            <img class="graphs" src="{{ url_for('static',filename='placeholder.png') }}" alt="placeholder">
+        </div>
+        <div></div>
 
-    <div></div>
-    <div class="graph_container">
-        <img class="graphs" src="{{ url_for('static',filename='placeholder.png') }}" alt="placeholder">
+        <div></div>
+        <div class="graph_container">
+            <img class="graphs" src="{{ url_for('static',filename='placeholder.png') }}" alt="placeholder">
+        </div>
+        <div class="graph_container">
+            <img class="graphs" src="{{ url_for('static',filename='placeholder.png') }}" alt="placeholder">
+        </div>
+        <div></div>
     </div>
-    <div class="graph_container">
-        <img class="graphs" src="{{ url_for('static',filename='placeholder.png') }}" alt="placeholder">
-    </div>
-    <div></div>
-</div>
-<div style="height: 20px;"></div>
-<a class="login_button" href="https://www.strava.com/oauth/authorize?client_id=151075&redirect_uri=http://localhost:5000/callback&response_type=code&scope=activity:read_all">Connect to <b>STRAVA</b></a>
+    <div style="height: 20px;"></div>
+    <a class="login_button" href="https://www.strava.com/oauth/authorize?client_id=151075&redirect_uri=http://localhost:5000/callback&response_type=code&scope=activity:read_all">Connect to <b>STRAVA</b></a>
 </body>
 </html>

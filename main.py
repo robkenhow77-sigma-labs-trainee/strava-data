@@ -23,7 +23,6 @@ def callback():
     session["code"] = code
     POST = f"https://www.strava.com/oauth/token?client_id={ENV["CLIENT_ID"]}&client_secret={ENV["CLIENT_SECRET"]}&code={code}&grant_type=authorization_code"
     res = post(POST)
-    print(res)
     if res.status_code != 200:
         return "Bad request", 400
     session["access_token"] = res.json()["access_token"]
