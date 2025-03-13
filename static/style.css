@@ -1,32 +1,34 @@
+.background_image {
+    background-image: url('/static/background.png');
+    height: 100%;
+    position: relative;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
 .container { display: grid;
     grid-template-columns: auto 35% 35% auto;
     grid-template-rows: 180px 180px;
-    gap: 10px;
-
+    gap: 30px;
 }
 
 .title_description {
     font-family: Arial, Helvetica, sans-serif;
     text-align: center;
     color: white;
-
-}
-
-.description {
-    text-align: center;
 }
 
 .graphs {
     width: 100%;
     height: 100%;
-    
 }
 
 .graph_container{
     border-style: solid;
-    border-radius: 5px;
-    border-color: white;
+    border-radius: 20px;
     border-width: 3px;
+    background-color: white;
 }
 
 .login_button {
@@ -42,18 +44,40 @@
     color: white;
     font-family: Boathouse, Segoe UI, Helvetica Neue, -apple-system, system-ui, BlinkMacSystemFont, Roboto, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;;
 }
+
 a:link {
     text-decoration: none;
   }
   
-  a:visited {
-    text-decoration: none;
+a:visited {
+text-decoration: none;
+}
+
+a:hover {
+text-decoration: none;
+}
+
+a:active {
+text-decoration: none;
+}
+
+.customers {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
   }
   
-  a:hover {
-    text-decoration: none;
+.customers td, th {
+    border: 1px solid #ddd;
+    padding: 8px;
   }
   
-  a:active {
-    text-decoration: none;
+.customers th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #04AA6D;
+    color: white;
   }

@@ -1,0 +1,56 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Strava analysis</title>
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='style.css') }}">
+    <script src="https://maps.googleapis.com/maps/api/js?key={{API_KEY}}&callback=initMap&libraries=geometry" async defer></script>
+    <script>
+        function initMap() {
+            const map = new google.maps.Map(document.getElementById("map"), {
+                center: { lat: 50.88, lng: -2.16 }, // Adjust to your location
+                //center: { lat: {{latitude}}, lng: {{longitude}} }, // Adjust to your location
+                zoom: 10,
+            });
+
+            // Your encoded polyline
+            const encodedPath = "wspuHrd`LzD[lAf@pE`Ebs@xaAd@|@l@pBpAr@pAnBj@NvFbKvQx^`M~QzGjMvIyMVCdAdAjCKzB}@pDo@ZUv@cBtDkNxA_El@sCzA_A?s@s@mAlAeSLaFx@mLvA_FfAiGtA_ArFmN`AmJz@oCvHyE`QaFnMeFfIyDhAyBdCwLz@oCbJcMtCqFdBoBhCy@`DmDjIsOvB}CdC{Fb@m@bE{CnEsEnRcP`O_VvEwL@u@Ok@FcAdBqEnE{NtGcf@lDiJfD}OpEuNlAiFf@qAl@QjCfCv@ErAiBr@yAf@iDd@mAxA}Av@SRYlHg_@v@yGT}@rCwDjFuKtA}G|CiEnCsIpA}H`@gEfAoHZuCDuFpAyGn@cJXqBfDaP|@aCjAeBIqB`@qCzA_EnHkNjEcFbTgj@nDuOjAmHlCmMTiCTqMGeGaBmJUqBYsJyBkO_@sDYgIyBuICm@\\uFA{I{BcGm@uBq@gGMcYVeSg@gReBoLoEwJm@kBKmA?qELsEN_A`AiBR{@h@iFCgDc@qCmAoEcDgJGq@\\uCnGoLhBoBlEeD]sIo@iAO}DkH~@sCBqD~@sBO_B_@qGeEeG{GCkBZiHkC}OyCqKeAmFeB_GkKmT}CuHaBgFuAl@gGhJ}WlZi@|@u@rDcAvCqC}BwEmF}@{A{EoNkCqKwCsFsC_CcFwBiCe@{EyCiZy@gNeBsCHqBz@gBlAiDpD{C|Ds@nC_@fJQ`Ac@p@}Ah@{DTgDi@iDsAy@Hi@xDUrQ{@zF}ApH{@|I[ZgBOuCxCkB\\_Ah@M\\wCx@m@vBkAVWn@OvAXnE{CvNe@jAwFjI{AdDs@zBuAnHuBxSqAzHcBjQaAlH_CzMsFnSgEvZe@bHg@xAg@j@oEzDR`Ap@~@vD`CZ|@KxAmAlFaDbJa@lDEnBJhCx@xFbA|QPtX[hPKfRH`G|@|GlCdNfAxHE|Be@xDYdGYlUn@zTQhIZfOCnQWbGy@`DG|@^dLjAbKFrJw@tL[h@aGCuMeAwCFwDxAwBnBmAlBoAdDs@`EUnFNbEx@pHlAzEnBfFdBlDzBjDO@mEsEiGmI_EeJyDcMkOo[gHgMw@aAaAMgBd@kDpC_JdEsH~IwGbHuBJeBd@eGdFqNhEyEzCwAxAGZJdAdA~B@ZY`@qIrA_DlAsC~AwF`HeFjEmHlBkNhHiKvCsXjQaBvAx@|FVtTx@zP`@lElEhUjEz_@bBlLjKlg@b@zAfBbEdh@|cAvA`EjA~ExAnInBlNr@bAzDn@VZYtBF^jAp@Lp@?fEKPWE@L"; // Truncated for readability
+
+            // Decode the polyline
+            const decodedPath = google.maps.geometry.encoding.decodePath(encodedPath);
+
+            // Create a polyline
+            const polyline = new google.maps.Polyline({
+                path: decodedPath,
+                geodesic: true,
+                strokeColor: "#FF0000",
+                strokeOpacity: 1.0,
+                strokeWeight: 4,
+            });
+
+            // Add polyline to map
+            polyline.setMap(map);
+        }
+    </script>
+</head>
+<body style="background-color: #03092b; color: white;">
+    <h1 class="title_description" >Latest activities</h1>
+    <table class="customers">
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Activity type</th>
+                <th>Duration</th>
+                <th>Kudos</th>
+            </tr>
+        </thead>
+        <tbody id="demo">
+        </tbody>
+    </table>
+    <script>
+        document.getElementById("demo").innerHTML = `{{table_data | safe}}`;
+    </script>
+    <div id="map" style="height: 500px; width: 100%;"></div>                
+    <!-- <div id="map" style="height: 500px; width: 100%;"></div> -->
+</body>
+</html>
