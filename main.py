@@ -1,6 +1,7 @@
 from os import urandom, environ as ENV
 from time import sleep
 from datetime import datetime
+import json
 
 from dotenv import load_dotenv
 from requests import get, post
@@ -21,7 +22,9 @@ def make_activities_table(data: dict):
         html += f"""
             <tr>
                 <td>{date_time}</td>
-                <td>{row["sport_type"]}</td>
+                <td>
+                    <a href = "/activities/{row["id"]}">{row["sport_type"]}<a/>
+                </td>
                 <td>{row["elapsed_time"]}</td>
                 <td>{row["kudos_count"]}</td>
             </tr>
@@ -50,9 +53,17 @@ def callback():
 @app.route("/main")
 def welcome():
     """API call to get strava information"""
-    res = get("https://www.strava.com/api/v3/activities?after=1735689600", headers={"Authorization": f'Bearer {session["access_token"]}'})
+    res = get("https://www.strava.com/api/v3/activities", headers={"Authorization": f'Bearer {session["access_token"]}'})
     data = res.json()
     table_html = make_activities_table(data)
     """Adding a variable to a template"""
-    print(ENV["API_KEY"])
-    return render_template('main_page.html', table_data=table_html, API_KEY=ENV["API_KEY"])
+    return render_template('main_page.html', table_data=table_html)
+
+
+@app.route("/activities/<int:id>")
+def activity(id):
+    res = get(f"https://www.strava.com/api/v3//activities/{id}", headers={"Authorization": f'Bearer {session["access_token"]}'})
+    data = res.json()
+    polyline_str = data["map"]["summary_polyline"]
+    return data
+    return render_template('activity.html', polyline=json.dumps(polyline_str), API_KEY=ENV["API_KEY"])

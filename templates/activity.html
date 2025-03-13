@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://maps.googleapis.com/maps/api/js?key={{API_KEY}}&callback=initMap&libraries=geometry" async defer></script>
+    <script>
+        function initMap() {
+            const map = new google.maps.Map(document.getElementById("map"), {
+                center: { lat: 50.88, lng: -2.16 }, // Adjust to your location
+                //center: { lat: {{latitude}}, lng: {{longitude}} }, // Adjust to your location
+                zoom: 10,
+            });
+
+            // Your encoded polyline
+            const encodedPath = {{polyline |safe}};
+
+            // Decode the polyline
+            const decodedPath = google.maps.geometry.encoding.decodePath(encodedPath);
+
+            // Create a polyline
+            const polyline = new google.maps.Polyline({
+                path: decodedPath,
+                geodesic: true,
+                strokeColor: "#FF0000",
+                strokeOpacity: 1.0,
+                strokeWeight: 4,
+            });
+
+            // Add polyline to map
+            polyline.setMap(map);
+        }
+    </script>
+</head>
+<body>
+    <h1>Your activity</h1>
+    <div id="map" style="height: 500px; width: 100%;"></div>
+</body>
+</html>
+
+
+
