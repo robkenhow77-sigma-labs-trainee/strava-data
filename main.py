@@ -7,6 +7,7 @@ from dotenv import load_dotenv
 from requests import get, post
 from flask import Flask, redirect, request, session, render_template
 
+from functions import make_pace_graph, make_elevation_graph
 
 load_dotenv
 app = Flask(__name__)
@@ -30,6 +31,8 @@ def make_activities_table(data: dict):
             </tr>
             """
     return html
+
+
 
 
 @app.route("/")
@@ -64,6 +67,8 @@ def welcome():
 def activity(id):
     res = get(f"https://www.strava.com/api/v3//activities/{id}", headers={"Authorization": f'Bearer {session["access_token"]}'})
     data = res.json()
+    pace_graph = make_pace_graph(data)
+    elevation_graph = make_elevation_graph(data)
     polyline_str = data["map"]["summary_polyline"]
-    return data
-    return render_template('activity.html', polyline=json.dumps(polyline_str), API_KEY=ENV["API_KEY"])
+    return render_template('activity.html',  API_KEY=ENV["API_KEY"], polyline=json.dumps(polyline_str), pace_graph=pace_graph, elevation_graph=elevation_graph)
+

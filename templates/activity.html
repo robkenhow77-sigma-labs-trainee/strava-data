@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <title>Strava activity</title>
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='style.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/vega@5.24.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.8.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.23.0"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key={{API_KEY}}&callback=initMap&libraries=geometry" async defer></script>
     <script>
         function initMap() {
@@ -11,7 +16,7 @@
             });
 
             // Your encoded polyline
-            const encodedPath = {{polyline |safe}};
+            const encodedPath = {{polyline | safe}};
 
             // Decode the polyline
             const decodedPath = google.maps.geometry.encoding.decodePath(encodedPath);
@@ -30,9 +35,52 @@
         }
     </script>
 </head>
-<body>
-    <h1>Your activity</h1>
-    <div id="map" style="height: 500px; width: 100%;"></div>
+
+<body style="background-color: #03092b; color: white;">
+    <h1 class="title_description">Your activity</h1>
+    <div class="activity_container">
+        <div class="activity_metrics_container"> 
+            <div class="activity_metrics">Distance</div>
+            <div class="activity_metrics">Time</div>
+            <div class="activity_metrics">Speed</div>
+            <div class="activity_metrics">Calories</div>
+        </div>
+
+        <div style="position: relative;">
+            <h3 style="color: red; z-index: 1; position: relative; display: inline-block; width: auto;">Route</h3>
+            <div class="map" id="map" style="height: 100%; width: 100%; z-index: 0;"></div>
+        </div>
+       
+        <div id="pace_chart">
+            <script>
+                // Parse the JSON passed from Flask
+                const paceChartSpec = {{ pace_graph | safe }};
+        
+                // Embed the chart in the div with id 'chart'
+                vegaEmbed("#pace_chart", paceChartSpec, {
+                    actions: false
+                })
+                    .then(result => console.log("Chart rendered successfully!"))
+                    .catch(console.error);
+            </script>
+        </div>
+
+        <div id="elevation_chart">
+            <script>
+                // Parse the JSON passed from Flask
+                const elevationChartSpec = {{ elevation_graph | safe }};
+        
+                // Embed the chart in the div with id 'chart'
+                vegaEmbed("#elevation_chart", elevationChartSpec, {
+                    actions: false  // Disable the options menu
+                })
+                    .then(result => console.log("Chart rendered successfully!"))
+                    .catch(console.error);
+            </script>
+        </div>
+    </div>
+    
+   
 </body>
 </html>
 

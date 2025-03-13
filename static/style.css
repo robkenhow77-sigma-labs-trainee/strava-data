@@ -7,7 +7,8 @@
     background-size: cover;
 }
 
-.container { display: grid;
+.container { 
+    display: grid;
     grid-template-columns: auto 35% 35% auto;
     grid-template-rows: 180px 180px;
     gap: 30px;
@@ -81,3 +82,34 @@ text-decoration: none;
     background-color: #04AA6D;
     color: white;
   }
+
+.activity_container {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: 180px 180px;
+
+}
+
+.activity_metrics_container {
+    display: grid;
+    grid-template-columns:auto auto;
+    grid-template-rows: auto auto;
+    gap: 30px;
+    width: 100%;
+    height: 100%;
+   
+}
+
+.activity_metrics {
+    border-radius: 20px;
+    border-width: 3px;
+    padding: 5px;
+    border: 1px solid #ddd;
+}
+
+.map {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    
+}

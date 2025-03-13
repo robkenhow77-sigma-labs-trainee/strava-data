@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <style>
+    #vis.vega-embed {
+      width: 100%;
+      display: flex;
+    }
+
+    #vis.vega-embed details,
+    #vis.vega-embed details summary {
+      position: relative;
+    }
+  </style>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vega-lite@5.20.1"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+</head>
+<body>
+  <div id="vis"></div>
+  <script>
+    (function(vegaEmbed) {
+      var spec = {"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}}, "data": {"name": "data-caae05a31698310a3d988dcaabd8da83"}, "mark": {"type": "line"}, "encoding": {"x": {"axis": {"tickCount": 10}, "field": "time", "type": "quantitative"}, "y": {"field": "elevation", "type": "quantitative"}}, "height": 500, "width": 700, "$schema": "https://vega.github.io/schema/vega-lite/v5.20.1.json", "datasets": {"data-caae05a31698310a3d988dcaabd8da83": [{"elevation": 8.2, "time": 2.6}, {"elevation": 21.0, "time": 6.17}, {"elevation": -1.6000000000000014, "time": 8.72}, {"elevation": -18.0, "time": 11.45}, {"elevation": -12.4, "time": 13.93}, {"elevation": -18.4, "time": 16.27}, {"elevation": -11.999999999999998, "time": 18.5}, {"elevation": -18.4, "time": 20.63}, {"elevation": -14.2, "time": 26.62}, {"elevation": -23.799999999999997, "time": 28.77}, {"elevation": -27.199999999999996, "time": 30.73}, {"elevation": -27.599999999999994, "time": 32.73}, {"elevation": -25.799999999999994, "time": 34.83}, {"elevation": -29.999999999999993, "time": 37.05}, {"elevation": -30.599999999999994, "time": 38.98}, {"elevation": -32.8, "time": 41.03}, {"elevation": -30.199999999999996, "time": 43.17}, {"elevation": -27.799999999999997, "time": 45.7}, {"elevation": -32.599999999999994, "time": 48.47}, {"elevation": -26.799999999999994, "time": 51.67}, {"elevation": -5.799999999999994, "time": 55.25}, {"elevation": -12.799999999999994, "time": 57.65}, {"elevation": -11.999999999999993, "time": 59.97}, {"elevation": -8.999999999999993, "time": 62.45}, {"elevation": -2.999999999999993, "time": 65.2}, {"elevation": -10.799999999999994, "time": 70.58}, {"elevation": -0.7999999999999936, "time": 73.7}, {"elevation": -20.599999999999994, "time": 76.28}, {"elevation": -3.999999999999993, "time": 79.48}, {"elevation": -13.199999999999992, "time": 82.22}, {"elevation": -9.799999999999992, "time": 84.8}, {"elevation": 7.80000000000001, "time": 88.03}, {"elevation": 18.80000000000001, "time": 91.37}, {"elevation": 21.20000000000001, "time": 94.58}, {"elevation": 7.60000000000001, "time": 97.28}, {"elevation": 2.8000000000000105, "time": 99.75}, {"elevation": 5.400000000000011, "time": 102.52}, {"elevation": 5.600000000000011, "time": 105.35}, {"elevation": 9.400000000000011, "time": 108.55}, {"elevation": 25.400000000000013, "time": 111.72}, {"elevation": 47.60000000000001, "time": 114.87}, {"elevation": 28.20000000000001, "time": 116.87}, {"elevation": 3.0000000000000107, "time": 118.43}, {"elevation": 6.60000000000001, "time": 119.95}]}};
+      var embedOpt = {"mode": "vega-lite"};
+
+      function showError(el, error){
+          el.innerHTML = ('<div style="color:red;">'
+                          + '<p>JavaScript Error: ' + error.message + '</p>'
+                          + "<p>This usually means there's a typo in your chart specification. "
+                          + "See the javascript console for the full traceback.</p>"
+                          + '</div>');
+          throw error;
+      }
+      const el = document.getElementById('vis');
+      vegaEmbed("#vis", spec, embedOpt)
+        .catch(error => showError(el, error));
+    })(vegaEmbed);
+
+  </script>
+</body>
+</html>
